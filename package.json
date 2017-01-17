@@ -1,6 +1,6 @@
 {
-  "name": "gulp-cloudfront",
-  "version": "0.0.14",
+  "name": "gulp-cloudfront-improved",
+  "version": "0.0.15",
   "description": "",
   "main": "index.js",
   "dependencies": {
