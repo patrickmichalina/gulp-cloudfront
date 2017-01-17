@@ -24,7 +24,7 @@ module.exports = function(options) {
                 deferred.reject(err);
             } else {
                 // trim the precedeing slash
-                if ( '/' == defaultRootObject.charAt(0) ) {
+                if ( '/' === defaultRootObject.charAt(0) || '\\' === defaultRootObject.charAt(0) ) {
                     defaultRootObject = defaultRootObject.substr(1);
                 }
 
@@ -40,11 +40,6 @@ module.exports = function(options) {
                     data.DistributionConfig.Origins.Items[0].S3OriginConfig &&
                     data.DistributionConfig.Origins.Items[0].S3OriginConfig.OriginAccessIdentity === null) {
                     data.DistributionConfig.Origins.Items[0].S3OriginConfig.OriginAccessIdentity = '';
-                }
-
-                if (data.DistributionConfig.DefaultRootObject === defaultRootObject) {
-                    gutil.log('gulp-cloudfront:', "DefaultRootObject hasn't changed, not updating.");
-                    return deferred.resolve();
                 }
 
                 // Update the distribution with the new default root object (trim the precedeing slash)
